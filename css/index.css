@@ -1,3 +1,9 @@
+#phone {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
 
 .e7 video {
     display: none;
@@ -382,6 +388,22 @@ header {
     }
 }
 
+
+@media (max-width:900px) {
+    .visible {
+        width: 92%;
+        position: relative;
+    }
+}
+
+@media (max-width:500px) {
+    .visible {
+        width: 89%;
+        position: relative;
+    }
+}
+
+
 @media (min-width:768px) {
     .col-sm-offset-2 {
         margin-left: 16.66666667%;
@@ -406,6 +428,11 @@ header {
         width: 33.33333333%;
         float: left
     }
+}
+
+.box span {
+    text-align: center;
+    padding-bottom: 4rem;
 }
 
 .title {
@@ -543,34 +570,29 @@ header {
 }
 
 #statusText {
-    position: absolute;
+    position: relative;
     left: 0;
     right: 0;
     margin: auto;
     text-align: center;
-    bottom: -25%;
+    padding-bottom: 0.7rem;
     color: #f3ac27;
     font-size: 18px;
-    font-family: Roboto, sans-serif
+    font-family: Roboto, sans-serif;
+}
+
+.progressionBox {
+    position: static;
+    display: flex;
+    flex-flow: column wrap;
+    width: 100%;
 }
 
 #statusText span {
     display: none
 }
 
-#register {
-    background: #fff;
-    box-shadow: 0 16px 24px 2px rgba(0, 0, 0, .14), 0 6px 30px 5px rgba(0, 0, 0, .12), 0 8px 10px -5px rgba(0, 0, 0, .3);
-    transition: transform .1s ease-in-out
-}
 
-#register.close {
-    width: 0;
-    padding: 0;
-    overflow: hidden;
-    transition: .8s ease-in-out;
-    box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0)
-}
 
 .next {
     position: absolute;
@@ -593,6 +615,41 @@ header {
     color: #ff2d26
 }
 
+#multiStepForm {
+    width: 100%;
+
+}
+
+fieldset {
+    position: absolute;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    margin-top: 0;
+    display: block;
+    width: 85%
+}
+
+fieldset #inputField {
+    width: 100%;
+    padding: 0 5px;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    outline: 0;
+    background: transparent;
+    box-shadow: none;
+    color: #9e9e9e;
+}
+
+fieldset input:valid+#inputLabel {
+    top: -15px;
+    font-size: 11px;
+    font-weight: normal;
+    color: #9e9e9e
+}
+
+
+/* Para ser removido */
 #inputContainer {
     position: absolute;
     opacity: 0;
@@ -612,6 +669,8 @@ header {
     background: transparent;
     box-shadow: none
 }
+
+/* Para ser removido */
 
 #inputLabel {
     position: absolute;
@@ -673,8 +732,38 @@ header {
     transition: width .6s ease-in-out
 }
 
+.error #inputProgress {
+    border-color: #ff2d26;
+}
+
+.error .next {
+    color: #ff2d26
+}
+
+.box-error-animation {
+    animation: shake 0.5s;
+}
+
+@keyframes shake {
+
+    0%,
+    60% {
+        transform: translate(0, 0);
+    }
+
+    20%,
+    80% {
+        transform: translate(-20px, 0);
+    }
+
+    40%,
+    100% {
+        transform: translate(20px, 0);
+    }
+}
+
 .wrong #inputProgress {
-    border-color: #ff2d26
+    border-color: #ff2d26;
 }
 
 .progression {
@@ -682,6 +771,9 @@ header {
     position: absolute;
     top: -60px;
     color: #666 !important;
+    width: 100%;
+    text-align: center;
+
 }
 
 #progressionTitle {
@@ -734,19 +826,20 @@ header {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    justify-content: space-evenly;
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
     -ms-flex-direction: row;
-    flex-direction: row;
+    flex-direction: column;
     background: #fff;
     width: 100%;
     height: 100%;
     border-radius: 20px;
     box-shadow: 40px 0 65px rgba(212, 197, 186, .4);
-    padding: 40px 50px 0 30px;
+    padding: 40px 50px 30px 30px;
     box-sizing: border-box;
     opacity: 0;
     -webkit-transform-origin: center;
@@ -754,6 +847,8 @@ header {
     -webkit-transform: scale(1.2, 1.2);
     transform: scale(1.2, 1.2)
 }
+
+
 
 .box:nth-child(1),
 .box:nth-child(2) {
@@ -1007,10 +1102,10 @@ header {
 }
 
 .offerLong,
-        .offerLongClean,
-        .offerShort {
-            text-transform: lowercase;
-        }
+.offerLongClean,
+.offerShort {
+    text-transform: lowercase;
+}
 
 .verifyOverlay {
     position: fixed;
@@ -1022,4 +1117,37 @@ header {
     display: block;
     background: rgba(0, 0, 0, .8);
     z-index: 20000
+}
+
+#register {
+    background: #fff;
+    box-shadow: 0 16px 24px 2px rgba(0, 0, 0, .14), 0 6px 30px 5px rgba(0, 0, 0, .12), 0 8px 10px -5px rgba(0, 0, 0, .3);
+    transition: transform .1s ease-in-out
+}
+
+#register.close {
+    width: 0;
+    padding: 0;
+    overflow: hidden;
+    transition: .8s ease-in-out;
+    box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0)
+}
+
+.inAnimation{
+
+}
+
+.iti__flag-container {
+    position: relative;
+}
+
+
+.iti__selected-flag {
+    z-index: 2;
+    position: sticky;
+}
+
+
+.iti--allow-dropdown {
+    display: flex;
 }

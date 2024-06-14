@@ -51,10 +51,13 @@
     </script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" type="text/css">
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" type="text/css">
-    <script type="text/javascript"
-        src="script/scriptsMin.js"></script>
-    <script type="text/javascript"
-        src="script/scriptsUnveil.js"></script>
+    <!-- phone selector  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+    <script type="text/javascript" src="script/phoneCountry.js"></script>
+    <!-- phone selector  -->
+    <script type="text/javascript" src="script/scriptsMin.js"></script>
+    <script type="text/javascript" src="script/scriptsUnveil.js"></script>
     <script type="text/javascript" src="script/scriptTweenMax.js"></script>
     <!-- Facebook Pixel Code -->
     <script>
@@ -76,11 +79,25 @@
             src="https://www.facebook.com/tr?id=1708248306058901&amp;ev=PageView&amp;noscript=1" /></noscript>
     <!-- End Facebook Pixel Code -->
     <link rel="stylesheet" href="./css/index.css">
+    <style>
+        /* Classe para esconder elementos */
+        .hidden {
+            display: none;
+        }
+
+        /* Classe para exibir elementos */
+        .visible {
+            opacity: 1;
+            display: block;
+        }
+    </style>
 </head>
 
 <body onLoad="scrlsts();">
 
-    <iframe id="redTrackFrame" style="display:none;" src="https://5tlep.rdtk.io/6664b6cb28aeba0001b73f8b"></iframe>
+    <iframe id="redTrackFrame" style="display:none;" src="https:55.com"></iframe>
+    <!-- <iframe id="redTrackFrame" style="display:none;" src="https://5tlep.rdtk.io/6664b6cb28aeba0001b73f8b"></iframe> -->
+
 
     <div id="adv"
         style="display:none; padding: 10px 0 5px;background: #fff; color: #555;font-size: 14px; text-align: center;">
@@ -170,7 +187,7 @@
 
 
                         <a class="btn btn-success pulsing"
-                             href="http://out.carbide.io/3f6f1747-f7bb-47fd-8a33-73854c8cbbc0?sid=MS001"
+                            href="http://out.carbide.io/3f6f1747-f7bb-47fd-8a33-73854c8cbbc0?sid=MS001"
                             onclick="clicked();return false;">Claim my bonus! </a>
 
 
@@ -274,11 +291,8 @@
     <noscript id="deferred-styles">
         <link rel="stylesheet" type="text/css"
             href="https://d2bnx5cu2napvs.cloudfront.net/website/assets/app/assets/scripts/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css"
-            href="css/emailsi.css">
-        <link rel="stylesheet" type="text/css"
-            href="css/emailsim.css"
-            media="screen" />
+        <link rel="stylesheet" type="text/css" href="css/emailsi.css">
+        <link rel="stylesheet" type="text/css" href="css/emailsim.css" media="screen" />
     </noscript>
 
 
@@ -370,9 +384,8 @@
             document.title = scrl;
             setTimeout("scrlsts()", 1500);
         }
+
     </script>
-
-
 
 
 
@@ -385,353 +398,423 @@
             <div class="box" style="opacity: 0.25; transform: matrix(0.99756, 0.06975, -0.06975, 0.99756, 0, 0);"></div>
             <div class="box" style="opacity: 0.5; transform: matrix(0.99756, -0.06975, 0.06975, 0.99756, 0, 0);"></div>
             <div class="box" id="register" style="opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);">
-                <div class="progressbox" id="progress1">
-                    <span class="progression">Claim the <b><span class='offerShort'></span></b> by activating your
-                        email.</span>
-                    <div class="center" id="form">
-                        <div>
 
-                            <form id="easy" name="contact" class="validate" onsubmit="return false;">
-                                <div id="inputContainer" >
-
-                                    <fieldset  style="opacity: 1;">
-                                        <input id="inputField" name="name" required="" autofocus="" type="text">
-                                        <label id="inputLabel">What&#x27;s Your First Name</label>
-                                    </fieldset>
-
-                                    <fieldset  style="opacity: 1;">
-                                        <input id="inputField" name="name" required="" autofocus="" type="text">
-                                        <label id="inputLabel">What&#x27;s Your Last Name/label>
-                                    </fieldset>
-
-                                    <fieldset  style="opacity: 1;">
-                                        <input id="inputField" name="name" required="" autofocus="" type="tel" pattern="/^\+?\d{1,3}?[\s\-\.]?\(?\d{1,4}?\)?[\s\-\.]?\d{1,4}[\s\-\.]?\d{1,4}[\s\-\.]?\d{1,9}$/">
-                                        <label id="inputLabel">What&#x27;s Your Phone Number</label>
-                                    </fieldset >
-
-                                    <fieldset style="opacity: 1;">
-                                        <input id="inputField" name="name" required="" autofocus="" type="text" pattern="/^[^\s@]+@[^\s@]+\.[^\s@]+$/">
-                                        <label id="inputLabel">What&#x27;s Your Email</label>
-                                    </fieldset>
-                                    
-                                    <div id="inputProgress" style="width: 100%;"></div>
-                                    <i id="progressButton" class="ion-android-arrow-forward next"></i>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <script type="text/javascript">
-
-                        function clicked() {
-                            jQuery('#submissionWrap').show();
-                            jQuery('#mvp-main-nav-small').hide();
-                            var $boxOne = jQuery('.box:nth-child(1)'),
-                                $boxTwo = jQuery('.box:nth-child(2)'),
-                                $boxThree = jQuery('.box:nth-child(3)'),
-                                $titleOne = jQuery('.headcont');
-                            var boxOne = new TimelineMax(),
-                                boxTwo = new TimelineMax(),
-                                boxThree = new TimelineMax(),
-                                titleOne = new TimelineMax();
-
-                        };
-                        var questions = [
-                            {
-                                question: "What's Your First Name",
-                                name: "fist_name"
-                            },
-                            {
-                                question: "What's Your Last Name",
-                                name: "last_name"
-                            },
-                            {
-                                question: "What's Your Phone Number",
-                                context: '<input id="phone" type="tel" name="phone" />',
-                                name: "phone",
-                                pattern: /^\+?\d{1,3}?[\s\-\.]?\(?\d{1,4}?\)?[\s\-\.]?\d{1,4}[\s\-\.]?\d{1,4}[\s\-\.]?\d{1,9}$/
-                            },
-                            {
-                                question: "What's Your Email",
-                                name: "email",
-                                pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-                            },
-                        ];
-
-                        (function () {
-                            var tTime = 100
-                            var wTime = 200
-                            var eTime = 1000
-                            var position = 0
-                            putQuestion()
-                            progressButton.addEventListener('click', validate)
-                            inputField.addEventListener('keyup', function (e) {
-                                transform(0, 0)
-                                if (e.keyCode == 13) validate()
-                            })
-
-                            function putQuestion() {
-                                inputLabel.innerHTML = questions[position].question
-                                inputField.value = ''
-                                inputField.name = questions[position].name
-                                inputField.type = questions[position].type || 'text'
-                                inputField.focus()
-                                showCurrent()
-                            }
-
-
-                            function done() {
-                                clickedNext();
-                                jQuery('#statusText').show();
-                            }
-
-                            function validate() {
-                                questions[position].value = inputField.value
-                                if (!inputField.value.match(questions[position].pattern || /.+/)) wrong()
-                                else ok(function () {
-                                    ++position;
-                                    if (questions[position]) {
-                                        hideCurrent(putQuestion)
-                                    } else {
-                                        $('#progressButton').removeClass('ion-android-checkmark-circle').addClass('ion-android-checkmark-circle');
-                                        var method = 'POST';
-                                        var action = 'https://hooks.zapier.com/hooks/catch/3217841/ff4wgw/';
-                                        var data = {};
-                                        var today = new Date();
-                                        for (var i = 0, ii = questions.length; i < ii; ++i) {
-                                            var input = questions[i];
-                                            if (input.name) {
-                                                data[input.name] = input.value;
-                                            }
-                                        }
-                                        data["url"] = window.location.href;
-                                        data["sid"] = 'MS001';
-                                        data["cas"] = 'Dunder';
-
-                                        data["date"] = today;
-
-                                        localStorage.setItem("email", data["email"]);
-                                        localStorage.setItem("fist_name", data["fist_name"]);
-                                        localStorage.setItem("last_name", data["last_name"]);
-                                        localStorage.setItem("phone", data["phone"]);
-   
-
-                                        var xhr = new XMLHttpRequest();
-                                        xhr.open(method, action, true);
-                                        xhr.send(JSON.stringify(data));
-                                        xhr.onloadend = function () {
-                                            hideCurrent(done);
-                                            jQuery('#register .center').hide();
-                                        };
-                                    }
-                                })
-                            }
-
-
-                            function hideCurrent(callback) {
-                                inputContainer.style.opacity = 0
-                                inputProgress.style.transition = 'none'
-                                inputProgress.style.width = 0
-                                setTimeout(callback, wTime)
-                            }
-
-                            function showCurrent(callback) {
-                                inputContainer.style.opacity = 1
-                                inputProgress.style.transition = ''
-                                inputProgress.style.width = '100%'
-                                setTimeout(callback, wTime)
-                            }
-
-                            function transform(x, y) {
-                                register.style.transform = 'translate(' + x + 'px ,  ' + y + 'px)'
-                            }
-
-                            function ok(callback) {
-                                register.className = 'box'
-                                setTimeout(transform, tTime * 0, 0, 10)
-                                setTimeout(transform, tTime * 1, 0, 0)
-                                setTimeout(callback, tTime * 2)
-                            }
-
-                            function wrong(callback) {
-                                register.className = 'wrong box'
-                                for (var i = 0; i < 6; i++) setTimeout(transform, tTime * i, (i % 2 * 2 - 1) * 20, 0)
-                                setTimeout(transform, tTime * 1, 0, 0)
-                                setTimeout(callback, tTime * 7)
-                            }
-                        }())
-                    </script>
+                <div id="progress1">
+                    <span>Claim the <b><span class='offerShort'></span></b> by activating your email.</span>
                 </div>
-                <div id="statusText" style="display:none;">
-                    <span class="contentStatus" style="display: none;">Verifing Email Address</span>
-                    <span class="contentStatus" style="display: none;">Verifing Email Address</span>
-                    <span class="contentStatus" style="display: none;">Handshaking With Dunder</span>
-                    <span class="contentStatus" style="display: none;">Securing $600 Guaranteed Match Bonus + 200 Free
-                        Spins</span>
-                    <span class="contentStatus" style="display: none;">Success! Redirecting to Dunder...</span>
-                    <span class="contentStatus" style="display: none;">Success! Redirecting to Dunder...</span>
 
-                </div>
-                <div class="progressbox" id="progress2" style="display:none;">
-                    <span class="progression" id="progressionTitle">Confirming <span class='offerShort'></span> with
-                        <span class='casinoname'></span></span>
-                    <div class="bar">
-                        <div class="bar__fill" style="width: 5%"></div>
-                    </div>
-                    <div class="point point--active">
-                        <div class="bullet"></div>
-                        <span class="labeler"
-                            style="text-align:left; left: 30%; -webkit-transform: translate(-30%, 0); transform: translate(-30%, 0)">
-                            Validating Email <!-- Replace here  -->
-                        </span>
-                    </div>
-                    <div class="point">
-                        <div class="bullet"></div>
-                        <span class="labeler" style="text-align:center;">
-                            Contacting <!-- Replace here  -->
-                            <span class='casinoname'></span> <!-- Replace in end of the document   -->
-                        </span>
-                    </div>
-                    <div class="point">
-                        <div class="bullet"></div>
-                        <span class="labeler"
-                            style="text-align:right; left: 70%; -webkit-transform: translate(-70%, 0); transform: translate(-70%, 0)">
-                            Reserving Bonus <!-- Replace here  -->
-                        </span>
-                    </div>
-                </div>
-                <div class="headingWrap">
-                    <h1 class="logo headcont" style="opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);">Play To Win With
-                        <span class='casinoname'></span>
-                    </h1>
-                    <p class="subhead headcont" style="opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);">Enter your
-                        information to verify eligibility to claim <span class='offerLongClean'></span> with <span
-                            class='casinoname'></span>.</p>
-                </div>
-                <div class="regflow-coins" style="background-image:url('/assets/img/dunder-white.png');">
-                    <div style="padding-bottom:30.254%"> </div>
-                </div>
-            </div>
-        </div>
-        <script type="text/javascript">
-            // OneSignal.push(function() {
-            //   OneSignal.on('notificationPermissionChange', function(permissionChange) {
-            //     jQuery('#verifyOverlay').hide();
-            //     jQuery('#introModal').hide();
-            //     progressAnimation(2);
-            //   });
-            // });
-            const iframe = document.getElementById('redTrackFrame');
+                <form id="multiStepForm" name="contact" class="validate" onsubmit="return false;">
+                    <fieldset class="visible">
+                        <input id="inputField" name="fist_name" required autofocus type="text">
+                        <label id="inputLabel">What's Your First Name</label>
+                        <div id="inputProgress" style="width: 100%;"></div>
+                        <i id="progressButton" class="ion-android-arrow-forward next" onclick=" nextStep(1)"></i>
+                    </fieldset>
 
-        //   Attempt to get cid directly if the iframe and main window are on the same domain
-            iframe.onload = function() {
-              try {
-                  const iframeURL = new URL (iframe.contentWindow.location.href);
-                  const cid = iframeURL.searchParams.get('cid');
-                  if(cid){
-                    localStorage.setItem("cid", cid);
-                  }
-                  
-                 
-              } catch (error) {
-                  console.error('Error accessing iframe URL:', error);
-              }
-            };
-      
-            function onesignalkickoff() {
+                    <fieldset class="hidden">
+                        <input id="inputField" name="last_name" required autofocus type="text">
+                        <label id="inputLabel">What's Your Last Name</label>
+                        <div id="inputProgress" style="width: 100%;"></div>
+                        <i id="progressButton" class="ion-android-arrow-forward next" onclick="nextStep(2)"></i>
+                    </fieldset>
+
+                    <fieldset class="hidden">
+
+                        <input id="inputField" class="phone" name="phone" autofocus type="tel">
+                      <div id="inputProgress" style="width: 100%;"></div>
+                        <i id="progressButton" class="ion-android-arrow-forward next" onclick="nextStep(3)"></i>
+                    </fieldset>
+
+                    <fieldset class="hidden">
+                        <input id="inputField" name="email" required autofocus type="email">
+                        <label id="inputLabel">What's Your Email</label>
+                        <div id="inputProgress" style="width: 100%;"></div>
+                        <i id="progressButton" class="ion-android-arrow-forward next" onclick="nextStep(4)"></i>
+                    </fieldset>
+                </form>
 
 
-                //
-                // console.log(OneSignal);
-                // var skip = true;
-                // OneSignal.push(function() {
-                //   if (!OneSignal.isPushNotificationsSupported()) {};
-                //   OneSignal.isPushNotificationsEnabled(function(isEnabled) {
-                //     if (isEnabled) {} else {
-                //       skip = false;
-                //       jQuery('#verifyOverlay').show();
-                //       jQuery('#introModal').show();
-                //       OneSignal.registerForPushNotifications();
-                //       return;
-                //     };
-                //   });
-                // });
-                var skip = true;
-                setTimeout(function () {
-                    if (skip == true) {
-                        progressAnimation(2);
-                    };
-                }, 200);
-            };
+                <script type="text/javascript">
+                    document.addEventListener('DOMContentLoaded', function () {
+                        var input = document.querySelector(".phone");
+                        window.intlTelInput(input, {
+                            utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"
+                        });
+                    });
 
-            var divs = jQuery('.contentStatus').hide();
+                </script>
+                <script type="text/javascript">
 
-            function progressAnimation(getIndex) {
-
-                var getTotalPoints = 3;
-                var getCompleteIndex = jQuery('.point--active').index();
-                TweenMax.to(jQuery('.bar__fill'), 2, {
-                    width: (getIndex) / (getTotalPoints - 1) * 100 + '%'
-                }, function () { });
-                setTimeout(function () {
-                    jQuery('.point--active').addClass('point--complete').removeClass('point--active');
-                    var newIndex = getIndex + 3;
-                    jQuery('.point:nth-child(' + (newIndex) + ')').addClass('point--active');
-                    jQuery('.point:nth-child(' + (newIndex) + ')').prevAll().addClass('point--complete');
-                    jQuery('.point:nth-child(' + (newIndex) + ')').nextAll().removeClass('point--complete');
-                }, 1800);
-                divs.eq(getIndex).fadeOut(300);
-                setTimeout(function () {
-                    divs.eq(getIndex + 1).fadeIn(300);
-                }, 400);
-
-                setTimeout(function () {
-
-                    
-                    if (getIndex == 1) {
-                        onesignalkickoff();
-                    } else if (getIndex == 3) {
-
-                        var email = localStorage.getItem("email");
-                        var fist_name = localStorage.getItem("fist_name");
-                        var last_name = localStorage.getItem("last_name");
-                        var phone = localStorage.getItem("phone");
-                        var id = localStorage.getItem("cid");
-                                            
-
-                        fbq('track', 'Lead');
+                    function wrong(callback) {
+                        var boxes = document.querySelector('#register');
+                        boxes.classList.add('box-error-animation');
 
                         setTimeout(function () {
-                            window.location =
-                                // altere a url aqui
-                                'http://google.com/?' 
-                                + '&email=' + email
-                                + '&fist_name=' + fist_name
-                                + '&last_name=' + last_name
-                                + '&phone=' + phone
-                                + '&sub5=' + id;
-                        }, 100);
-                    } else {
-                        getIndex++;
-                        progressAnimation(getIndex);
+                            boxes.classList.remove('box-error-animation');
+
+                        }, 600); // Duração da animação de trepidação (em milissegundos)
                     }
-                }, 4000);
-            };
-            function clickedNext() {
+
+                    function hideCurrent(currentFieldset, callback) {
+                        currentFieldset.style.opacity = 0;
+                        setTimeout(callback, 200);
+                    }
+
+                    function done() {
+                        clickedNext();
+                        jQuery('#statusText').show();
+                    }
+
+                    function validateEmail(email) {
+                        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                        return emailPattern.test(email);
+                    }
+
+                    function validatePhone(phone) {
+
+                        const phonePattern = /^\+?\d{1,3}?[\s\-\.]?\(?\d{1,4}?\)?[\s\-\.]?\d{1,4}[\s\-\.]?\d{1,4}[\s\-\.]?\d{1,9}$/;
+                        return phonePattern.test(phone);
+                    }
 
 
-                jQuery('#progress1').hide();
-                jQuery('#progress2').show();
-                progressAnimation(0);
-            };
-            $('document').ready(function () {
-                $('.casinoname').html("Dunder");
-                $('.offerLong').html("$600 Guaranteed Match Bonus&lt;br /&gt; + 200 Free Spins");
-                $('.offerLongClean').html("$600 Guaranteed Match Bonus + 200 Free Spins");
-                $('.offerShort').html("200 Free Spins");
-            });
-            console.log(URL)
-        </script>
+                    function nextStep(currentStep) {
+                        var currentFieldset = document.querySelectorAll('fieldset')[currentStep - 1];
+                        var nextFieldset = document.querySelectorAll('fieldset')[currentStep];
+                        console.log("currentStep", currentStep);
+
+                        var inputField = currentFieldset.querySelector('input');
+                        var form = document.getElementById('multiStepForm');
+
+
+                        // Verificar se o campo de entrada está preenchido
+                        if (inputField.value.trim() === "") {
+                            form.classList.add('error');
+                            wrong();
+                            return;
+                        }
+
+                        // Verificar o tipo de campo e aplicar a validação apropriada
+                        if (inputField.type === 'email' && !validateEmail(inputField.value)) {
+                            console.log(inputField.type);
+                            console.log(!validateEmail(inputField.value));
+                            form.classList.add('error');
+                            wrong();
+                            return;
+
+                        }
+
+                        if (inputField.type === 'tel' && !validatePhone(inputField.value)) {
+
+                            form.classList.add('error');
+                            wrong();
+                            return;
+
+                        }
+
+                        if (currentStep == 4) {
+                            console.log("entrou");
+                            $('#progressButton').removeClass('ion-android-checkmark-circle').addClass('ion-android-checkmark-circle');
+                            hideCurrent(currentFieldset, done);
+                            jQuery('#register .center').hide();
+                            const form = document.querySelector('#multiStepForm');
+                            const formData = new FormData(form);
+
+                            // Converter FormData para um objeto simples para facilitar a visualização
+                            const formDataObject = {};
+                            formData.forEach((value, key) => {
+                                formDataObject[key] = value;
+                            });
+
+
+                            localStorage.setItem("email", formDataObject["email"]);
+                            localStorage.setItem("fist_name", formDataObject["fist_name"]);
+                            localStorage.setItem("last_name", formDataObject["last_name"]);
+                            localStorage.setItem("phone", formDataObject["phone"]);
+                            /*    var method = 'POST';
+                            var action = 'https://hooks.zapier.com/hooks/catch/3217841/ff4wgw/';
+                            var data = {};
+                            var today = new Date();
+                            for (var i = 0, ii = questions.length; i < ii; ++i) {
+                                var input = questions[i];
+                                if (input.name) {
+                                    data[input.name] = input.value;
+                                }
+                            }
+                            data["url"] = window.location.href;
+                            data["sid"] = 'MS001';
+                            data["cas"] = 'Dunder';
+
+                            data["date"] = today;
+
+                            
+
+
+                            var xhr = new XMLHttpRequest();
+                            xhr.open(method, action, true);
+                            xhr.send(JSON.stringify(data));
+                            xhr.onloadend = function () {
+                                hideCurrent(done);
+                                jQuery('#register .center').hide();
+                            };*/
+
+                        }
+                        form.classList.remove('error');
+                        currentFieldset.classList.remove('visible');
+                        currentFieldset.classList.add('hidden');
+                        nextFieldset.classList.remove('hidden');
+                        nextFieldset.classList.add('visible', 'inAnimation');
+
+                    }
+                    var questions = [
+                        { name: "fist_name" },
+                        { name: "last_name" },
+                        { name: "phone" },
+                        { name: "email" }
+                    ];
+
+                    function clicked() {
+                        jQuery('#submissionWrap').show();
+
+
+                    }
+
+
+                    (function () {
+                        var tTime = 100, wTime = 200, eTime = 1000, position = 0;
+                        putQuestion();
+                        progressButton.addEventListener('click', validate);
+                        inputField.addEventListener('keyup', function (e) {
+                            transform(0, 0);
+                            if (e.keyCode == 13) validate();
+                        });
+
+                        function putQuestion() {
+
+                            inputField.focus();
+                            showCurrent();
+
+
+                        }
+                        function done() {
+                            clickedNext();
+                            jQuery('#statusText').show();
+                        }
+
+                        function validate() {
+                            questions[position].value = inputField.value
+                            if (!inputField.value.match(questions[position].pattern || /.+/))
+                                wrong()
+                            else ok(function () {
+                                ++position;
+                                if (questions[position]) {
+                                    hideCurrent(putQuestion)
+                                } else {
+                                    $('#progressButton').removeClass('ion-android-checkmark-circle').addClass('ion-android-checkmark-circle');
+                                    var method = 'POST';
+                                    var action = 'https://hooks.zapier.com/hooks/catch/3217841/ff4wgw/';
+                                    var data = {};
+                                    var today = new Date();
+                                    for (var i = 0, ii = questions.length; i < ii; ++i) {
+                                        var input = questions[i];
+                                        if (input.name) {
+                                            data[input.name] = input.value;
+                                        }
+                                    }
+                                    data["url"] = window.location.href;
+                                    data["sid"] = 'MS001';
+                                    data["cas"] = 'Dunder';
+
+                                    data["date"] = today;
+
+                                    localStorage.setItem("email", data["email"]);
+                                    localStorage.setItem("fist_name", data["fist_name"]);
+                                    localStorage.setItem("last_name", data["last_name"]);
+                                    localStorage.setItem("phone", data["phone"]);
+
+
+                                    var xhr = new XMLHttpRequest();
+                                    xhr.open(method, action, true);
+                                    xhr.send(JSON.stringify(data));
+                                    xhr.onloadend = function () {
+                                        hideCurrent(done);
+                                        jQuery('#register .center').hide();
+                                    };
+                                }
+                            })
+                        }
+
+                        function hideCurrentInput(callback) {
+                            inputContainer.style.opacity = 0.1;
+                            inputProgress.style.transition = 'none';
+                            inputProgress.style.width = 0;
+                            setTimeout(callback, wTime);
+                        }
+
+                        function hideCurrent(callback) {
+                            inputContainer.style.opacity = 0.1;
+                            inputProgress.style.transition = 'none';
+                            inputProgress.style.width = 0;
+                            setTimeout(callback, wTime);
+                        }
+
+                        function showCurrent(callback) {
+                            inputContainer.style.opacity = 1;
+                            inputProgress.style.transition = '';
+                            inputProgress.style.width = '100%';
+                            setTimeout(callback, wTime);
+                        }
+                        function ok(callback) {
+                            register.className = 'box';
+                            setTimeout(transform, tTime * 0, 0, 10);
+                            setTimeout(transform, tTime * 1, 0, 0);
+                            setTimeout(callback, tTime * 2);
+                        }
+
+                    }())
+                </script>
+                <div class="progressionBox">
+                    <div id="statusText" style="display:none;">
+                        <span class="contentStatus" style="display: none;">Verifing Email Address</span>
+                        <span class="contentStatus" style="display: none;">Verifing Email Address</span>
+                        <span class="contentStatus" style="display: none;">Handshaking With Dunder</span>
+                        <span class="contentStatus" style="display: none;">Securing $600 Guaranteed Match Bonus + 200
+                            Free
+                            Spins</span>
+                        <span class="contentStatus" style="display: none;">Success! Redirecting to Dunder...</span>
+                        <span class="contentStatus" style="display: none;">Success! Redirecting to Dunder...</span>
+                    </div>
+                    <div>
+                        <div class="progressbox" id="progress2" style="display:none;">
+                            <span class="progression" id="progressionTitle">Confirming <span class='offerShort'></span>
+                                with
+                                <span class='casinoname'></span></span>
+                            <div class="bar">
+                                <div class="bar__fill" style="width: 5%"></div>
+                            </div>
+                            <div class="point point--active">
+                                <div class="bullet"></div>
+                                <span class="labeler"
+                                    style="text-align:left; left: 30%; -webkit-transform: translate(-30%, 0); transform: translate(-30%, 0)">Validating
+                                    Email</span>
+                            </div>
+                            <div class="point">
+                                <div class="bullet"></div>
+                                <span class="labeler" style="text-align:center;">Contacting <span
+                                        class='casinoname'></span></span>
+                            </div>
+                            <div class="point">
+                                <div class="bullet"></div>
+                                <span class="labeler"
+                                    style="text-align:right; left: 70%; -webkit-transform: translate(-70%, 0); transform: translate(-70%, 0)">Reserving
+                                    Bonus</span>
+                            </div>
+                        </div>
+                        <div class="headingWrap">
+                            <h1 class="logo headcont" style="opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);">Play To
+                                Win With
+                                <span class='casinoname'></span>
+                            </h1>
+                            <p class="subhead headcont" style="opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);">Enter
+                                your
+                                information to verify eligibility to claim <span class='offerLongClean'></span> with
+                                <span class='casinoname'></span>.
+                            </p>
+                        </div>
+                        <div class="regflow-coins" style="background-image:url('/assets/img/dunder-white.png');">
+                            <div style="padding-bottom:30.254%"> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
+    <script type="text/javascript">
+        const iframe = document.getElementById('redTrackFrame');
+        iframe.onload = function () {
+            try {
+                const iframeURL = new URL(iframe.contentWindow.location.href);
+                const cid = iframeURL.searchParams.get('cid');
+                if (cid) {
+                    localStorage.setItem("cid", cid);
+                }
+            } catch (error) {
+                console.error('Error accessing iframe URL:', error);
+            }
+        };
+
+        function onesignalkickoff() {
+            var skip = true;
+            setTimeout(function () {
+                if (skip == true) {
+                    progressAnimation(2);
+                    console.log(" progressAnimation(2)");
+                }
+            }, 200);
+        }
+
+        var divs = jQuery('.contentStatus').hide();
+        function progressAnimation(getIndex) {
+            console.log("function progressAnimation(getIndex) {");
+            var getTotalPoints = 3;
+            var getCompleteIndex = jQuery('.point--active').index();
+            TweenMax.to(jQuery('.bar__fill'), 2, { width: (getIndex) / (getTotalPoints - 1) * 100 + '%' }, function () { });
+            setTimeout(function () {
+                jQuery('.point--active').addClass('point--complete').removeClass('point--active');
+                var newIndex = getIndex + 3;
+                jQuery('.point:nth-child(' + (newIndex) + ')').addClass('point--active');
+                jQuery('.point:nth-child(' + (newIndex) + ')').prevAll().addClass('point--complete');
+                jQuery('.point:nth-child(' + (newIndex) + ')').nextAll().removeClass('point--complete');
+            }, 1800);//1800
+            divs.eq(getIndex).fadeOut(300);//300
+            setTimeout(function () {
+                divs.eq(getIndex + 1).fadeIn(300);//300
+            }, 400);//400
+
+            setTimeout(function () {
+                if (getIndex == 1) {
+                    onesignalkickoff();
+                    console.log("onesignalkickoff();");
+                } else if (getIndex == 3) {
+                    var email = localStorage.getItem("email");
+                    var fist_name = localStorage.getItem("fist_name");
+                    var last_name = localStorage.getItem("last_name");
+                    var phone = localStorage.getItem("phone");
+                    var id = localStorage.getItem("cid");
+
+                    fbq('track', 'Lead');
+                    setTimeout(function () {
+                        window.location = 'http://google.com/?'
+                            + '&email=' + email
+                            + '&fist_name=' + fist_name
+                            + '&last_name=' + last_name
+                            + '&phone=' + phone
+                            + '&sub5=' + id;
+                    }, 100);
+                } else {
+                    getIndex++;
+                    progressAnimation(getIndex);
+                    console.log(" progressAnimation(getIndex)");
+                }
+            }, 4000);//4000
+        }
+
+        function clickedNext() {
+            jQuery('#progress1').hide();
+            jQuery('#progress2').show();
+            progressAnimation(0);
+            console.log(" progressAnimation(0);");
+        }
+
+        $('document').ready(function () {
+            $('.casinoname').html("Dunder");
+            $('.offerLong').html("$600 Guaranteed Match Bonus&lt;br /&gt; + 200 Free Spins");
+            $('.offerLongClean').html("$600 Guaranteed Match Bonus + 200 Free Spins");
+            $('.offerShort').html("200 Free Spins");
+        });
+    </script>
+    </div>
+
 
 </body>
 

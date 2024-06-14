@@ -407,30 +407,31 @@
                     <fieldset class="visible">
                         <input id="inputField" name="fist_name" required autofocus type="text">
                         <label id="inputLabel">What's Your First Name</label>
-                        <div id="inputProgress" style="width: 100%;"></div>
+
                         <i id="progressButton" class="ion-android-arrow-forward next" onclick=" nextStep(1)"></i>
                     </fieldset>
 
                     <fieldset class="hidden">
                         <input id="inputField" name="last_name" required autofocus type="text">
                         <label id="inputLabel">What's Your Last Name</label>
-                        <div id="inputProgress" style="width: 100%;"></div>
+
                         <i id="progressButton" class="ion-android-arrow-forward next" onclick="nextStep(2)"></i>
                     </fieldset>
 
                     <fieldset class="hidden">
 
                         <input id="inputField" class="phone" name="phone" autofocus type="tel">
-                      <div id="inputProgress" style="width: 100%;"></div>
+
                         <i id="progressButton" class="ion-android-arrow-forward next" onclick="nextStep(3)"></i>
                     </fieldset>
 
                     <fieldset class="hidden">
-                        <input id="inputField" name="email" required autofocus type="email">
+                        <input id="inputField" name="email" required autofocus type="text">
                         <label id="inputLabel">What's Your Email</label>
-                        <div id="inputProgress" style="width: 100%;"></div>
+
                         <i id="progressButton" class="ion-android-arrow-forward next" onclick="nextStep(4)"></i>
                     </fieldset>
+                    <div id="inputProgress"></div>
                 </form>
 
 
@@ -445,6 +446,28 @@
                 </script>
                 <script type="text/javascript">
 
+                    document.querySelectorAll('#multiStepForm input').forEach(function (input, index) {
+                        input.addEventListener('keyup', function (e) {
+                            if (e.key === 'Enter') {
+                                nextStep(index + 1);
+                            }
+                        });
+                    });
+
+                    function sucessoInput(callback) {
+                        var boxes = document.querySelector('#register');
+                        var progress = document.querySelector('#inputProgress');
+
+                        boxes.classList.add('box-success-animation');
+                        progress.classList.add('progress-animation');
+
+                        setTimeout(function () {
+                            boxes.classList.remove('box-success-animation');
+                            progress.classList.remove('progress-animation');
+                            if (callback) callback();
+                        }, 600);
+                    }
+
                     function wrong(callback) {
                         var boxes = document.querySelector('#register');
                         boxes.classList.add('box-error-animation');
@@ -455,6 +478,7 @@
                         }, 600); // Duração da animação de trepidação (em milissegundos)
                     }
 
+
                     function hideCurrent(currentFieldset, callback) {
                         currentFieldset.style.opacity = 0;
                         setTimeout(callback, 200);
@@ -462,7 +486,9 @@
 
                     function done() {
                         clickedNext();
-                        jQuery('#statusText').show();
+                        jQuery('#statusText').show()
+                        && 
+                            jQuery('#inputProgress').hide();
                     }
 
                     function validateEmail(email) {
@@ -492,10 +518,10 @@
                             wrong();
                             return;
                         }
-
+                        console.log(inputField.name);
                         // Verificar o tipo de campo e aplicar a validação apropriada
-                        if (inputField.type === 'email' && !validateEmail(inputField.value)) {
-                            console.log(inputField.type);
+                        if (inputField.name === 'email' && !validateEmail(inputField.value)) {
+                            console.log(inputField.name);
                             console.log(!validateEmail(inputField.value));
                             form.classList.add('error');
                             wrong();
@@ -504,65 +530,56 @@
                         }
 
                         if (inputField.type === 'tel' && !validatePhone(inputField.value)) {
-
                             form.classList.add('error');
                             wrong();
                             return;
 
                         }
 
-                        if (currentStep == 4) {
-                            console.log("entrou");
-                            $('#progressButton').removeClass('ion-android-checkmark-circle').addClass('ion-android-checkmark-circle');
-                            hideCurrent(currentFieldset, done);
-                            jQuery('#register .center').hide();
-                            const form = document.querySelector('#multiStepForm');
-                            const formData = new FormData(form);
+                        sucessoInput(function () {
+                            if (currentStep == 4) {
+                                $('#progressButton').removeClass('ion-android-checkmark-circle').addClass('ion-android-checkmark-circle');
 
-                            // Converter FormData para um objeto simples para facilitar a visualização
-                            const formDataObject = {};
-                            formData.forEach((value, key) => {
-                                formDataObject[key] = value;
-                            });
+                                const form = document.querySelector('#multiStepForm');
+                                const formData = new FormData(form);
+                                //
+                                const formDataObject = {};
+                                formData.forEach((value, key) => {
+                                    formDataObject[key] = value;
+                                });
 
+                                var method = 'POST';
+                                var action = 'https://hooks.zapier.com/hooks/catch/3217841/ff4wgw/';
+                                var data = {};
+                                var today = new Date();
 
-                            localStorage.setItem("email", formDataObject["email"]);
-                            localStorage.setItem("fist_name", formDataObject["fist_name"]);
-                            localStorage.setItem("last_name", formDataObject["last_name"]);
-                            localStorage.setItem("phone", formDataObject["phone"]);
-                            /*    var method = 'POST';
-                            var action = 'https://hooks.zapier.com/hooks/catch/3217841/ff4wgw/';
-                            var data = {};
-                            var today = new Date();
-                            for (var i = 0, ii = questions.length; i < ii; ++i) {
-                                var input = questions[i];
-                                if (input.name) {
-                                    data[input.name] = input.value;
-                                }
+                                formDataObject["url"] = window.location.href;
+                                formDataObject["sid"] = 'MS001';
+                                formDataObject["cas"] = 'Dunder';
+                                formDataObject["date"] = today;
+
+                                localStorage.setItem("email", formDataObject["email"]);
+                                localStorage.setItem("fist_name", formDataObject["fist_name"]);
+                                localStorage.setItem("last_name", formDataObject["last_name"]);
+                                localStorage.setItem("phone", formDataObject["phone"]);
+
+                                var xhr = new XMLHttpRequest();
+                                xhr.open(method, action, true);
+                                xhr.send(JSON.stringify(formDataObject));
+                                xhr.onloadend = function () {
+                                    hideCurrent(currentFieldset, done);
+                                    jQuery('#register .center').hide();
+                                };
+
                             }
-                            data["url"] = window.location.href;
-                            data["sid"] = 'MS001';
-                            data["cas"] = 'Dunder';
+                            form.classList.remove('error');
+                            currentFieldset.classList.remove('visible');
+                            currentFieldset.classList.add('hidden');
+                            nextFieldset.classList.remove('hidden');
+                            nextFieldset.classList.add('visible');
+                        })
 
-                            data["date"] = today;
 
-                            
-
-
-                            var xhr = new XMLHttpRequest();
-                            xhr.open(method, action, true);
-                            xhr.send(JSON.stringify(data));
-                            xhr.onloadend = function () {
-                                hideCurrent(done);
-                                jQuery('#register .center').hide();
-                            };*/
-
-                        }
-                        form.classList.remove('error');
-                        currentFieldset.classList.remove('visible');
-                        currentFieldset.classList.add('hidden');
-                        nextFieldset.classList.remove('hidden');
-                        nextFieldset.classList.add('visible', 'inAnimation');
 
                     }
                     var questions = [
@@ -575,18 +592,13 @@
                     function clicked() {
                         jQuery('#submissionWrap').show();
 
-
                     }
 
 
                     (function () {
                         var tTime = 100, wTime = 200, eTime = 1000, position = 0;
                         putQuestion();
-                        progressButton.addEventListener('click', validate);
-                        inputField.addEventListener('keyup', function (e) {
-                            transform(0, 0);
-                            if (e.keyCode == 13) validate();
-                        });
+                      
 
                         function putQuestion() {
 
@@ -597,52 +609,11 @@
                         }
                         function done() {
                             clickedNext();
-                            jQuery('#statusText').show();
+                            jQuery('#statusText').show()  && 
+                            jQuery('#inputProgress').hide();
                         }
 
-                        function validate() {
-                            questions[position].value = inputField.value
-                            if (!inputField.value.match(questions[position].pattern || /.+/))
-                                wrong()
-                            else ok(function () {
-                                ++position;
-                                if (questions[position]) {
-                                    hideCurrent(putQuestion)
-                                } else {
-                                    $('#progressButton').removeClass('ion-android-checkmark-circle').addClass('ion-android-checkmark-circle');
-                                    var method = 'POST';
-                                    var action = 'https://hooks.zapier.com/hooks/catch/3217841/ff4wgw/';
-                                    var data = {};
-                                    var today = new Date();
-                                    for (var i = 0, ii = questions.length; i < ii; ++i) {
-                                        var input = questions[i];
-                                        if (input.name) {
-                                            data[input.name] = input.value;
-                                        }
-                                    }
-                                    data["url"] = window.location.href;
-                                    data["sid"] = 'MS001';
-                                    data["cas"] = 'Dunder';
-
-                                    data["date"] = today;
-
-                                    localStorage.setItem("email", data["email"]);
-                                    localStorage.setItem("fist_name", data["fist_name"]);
-                                    localStorage.setItem("last_name", data["last_name"]);
-                                    localStorage.setItem("phone", data["phone"]);
-
-
-                                    var xhr = new XMLHttpRequest();
-                                    xhr.open(method, action, true);
-                                    xhr.send(JSON.stringify(data));
-                                    xhr.onloadend = function () {
-                                        hideCurrent(done);
-                                        jQuery('#register .center').hide();
-                                    };
-                                }
-                            })
-                        }
-
+                    
                         function hideCurrentInput(callback) {
                             inputContainer.style.opacity = 0.1;
                             inputProgress.style.transition = 'none';
@@ -663,13 +634,7 @@
                             inputProgress.style.width = '100%';
                             setTimeout(callback, wTime);
                         }
-                        function ok(callback) {
-                            register.className = 'box';
-                            setTimeout(transform, tTime * 0, 0, 10);
-                            setTimeout(transform, tTime * 1, 0, 0);
-                            setTimeout(callback, tTime * 2);
-                        }
-
+                        
                     }())
                 </script>
                 <div class="progressionBox">

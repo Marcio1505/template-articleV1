@@ -388,25 +388,18 @@ header {
     }
 }
 
-@media (min-width: 900px) {
+/* @media (min-width: 1200px) {
     #inputProgress {
         margin-top: 26px;
     }
+} */
+
+.visible {
+    width: 92%;
+    position: relative;
 }
 
-@media (max-width:900px) {
-    .visible {
-        width: 92%;
-        position: relative;
-    }
-}
 
-@media (max-width:500px) {
-    .visible {
-        width: 89%;
-        position: relative;
-    }
-}
 
 
 @media (min-width:768px) {
@@ -621,6 +614,8 @@ header {
 }
 
 #multiStepForm {
+    display: flex;
+    flex-direction: column;
     width: 100%;
 
 }
@@ -1151,12 +1146,35 @@ fieldset input:valid+#inputLabel {
     position: relative;
 }
 
-
 .iti__selected-flag {
     z-index: 2;
     position: sticky;
 }
 
+.iti--container {
+    height: 25em;
+    width: 100%;
+    top: 0px !important;
+    left: 0px !important;
+
+}
+
+.iti__country-list {
+    margin-top: 46px;
+    width: 100%;
+}
+
+.iti-mobile .iti__country-list {
+    max-height: 200px;
+    margin-top: 127px;
+    margin-left: 30px;
+    width: calc(90% - 55px);
+}
+
+
+#inputFieldPhone {
+    font-size: 0.8em;
+}
 
 .iti--allow-dropdown {
     display: flex;

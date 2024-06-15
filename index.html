@@ -53,8 +53,7 @@
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" type="text/css">
     <!-- phone selector  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
-    <script type="text/javascript" src="script/phoneCountry.js"></script>
+
     <!-- phone selector  -->
     <script type="text/javascript" src="script/scriptsMin.js"></script>
     <script type="text/javascript" src="script/scriptsUnveil.js"></script>
@@ -75,7 +74,8 @@
         fbq('track', 'PageView');
     </script>
     <!-- Insert Your Facebook Pixel ID below. -->
-    <noscript><img height="1" width="1" style="display:none"
+    <noscript>
+        <img height="1" width="1" style="display:none"
             src="https://www.facebook.com/tr?id=1708248306058901&amp;ev=PageView&amp;noscript=1" /></noscript>
     <!-- End Facebook Pixel Code -->
     <link rel="stylesheet" href="./css/index.css">
@@ -91,13 +91,13 @@
             display: block;
         }
     </style>
+
+
 </head>
 
 <body onLoad="scrlsts();">
 
-    <iframe id="redTrackFrame" style="display:none;" src="https:55.com"></iframe>
-    <!-- <iframe id="redTrackFrame" style="display:none;" src="https://5tlep.rdtk.io/6664b6cb28aeba0001b73f8b"></iframe> -->
-
+    <iframe id="redTrackFrame" style="display:none;" src="https://5tlep.rdtk.io/6664b6cb28aeba0001b73f8b"></iframe>
 
     <div id="adv"
         style="display:none; padding: 10px 0 5px;background: #fff; color: #555;font-size: 14px; text-align: center;">
@@ -414,14 +414,13 @@
                     <fieldset class="hidden">
                         <input id="inputField" name="last_name" required autofocus type="text">
                         <label id="inputLabel">What's Your Last Name</label>
-
                         <i id="progressButton" class="ion-android-arrow-forward next" onclick="nextStep(2)"></i>
                     </fieldset>
 
                     <fieldset class="hidden">
-
+                        <div id="inputFieldPhone">What's Your Phone Number</div>
                         <input id="inputField" class="phone" name="phone" autofocus type="tel">
-
+                        <div id="country-list-container"></div>
                         <i id="progressButton" class="ion-android-arrow-forward next" onclick="nextStep(3)"></i>
                     </fieldset>
 
@@ -434,17 +433,34 @@
                     <div id="inputProgress"></div>
                 </form>
 
+                <script
+                    src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+
 
                 <script type="text/javascript">
-                    document.addEventListener('DOMContentLoaded', function () {
-                        var input = document.querySelector(".phone");
-                        window.intlTelInput(input, {
-                            utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"
-                        });
+
+                    const url = "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js";
+                    function getIp(callback) {
+                        fetch('https://ipinfo.io/json?token=df26bb0f8ce15c', { headers: { 'Accept': 'application/json' } })
+                            .then((resp) => resp.json())
+                            .catch(() => {
+                                return { country: 'us' };
+                            })
+                            .then((resp) => callback(resp.country));
+                    }
+
+
+                    var phoneInputField = document.querySelector("input[name='phone']");
+                    var countryListContainer = document.getElementById("country-list-container") ||
+                        document.getElementsByClassName("iti__flag-container");
+                    var iti;
+
+                    iti = window.intlTelInput(phoneInputField, {
+                        initialCountry: "auto",
+                        dropdownContainer: countryListContainer,
+                        geoIpLookup: getIp,
+                        utilsScript: url,
                     });
-
-                </script>
-                <script type="text/javascript">
 
                     document.querySelectorAll('#multiStepForm input').forEach(function (input, index) {
                         input.addEventListener('keyup', function (e) {
@@ -487,7 +503,7 @@
                     function done() {
                         clickedNext();
                         jQuery('#statusText').show()
-                        && 
+                            &&
                             jQuery('#inputProgress').hide();
                     }
 
@@ -518,18 +534,18 @@
                             wrong();
                             return;
                         }
-                        console.log(inputField.name);
-                        // Verificar o tipo de campo e aplicar a validação apropriada
+
+
                         if (inputField.name === 'email' && !validateEmail(inputField.value)) {
-                            console.log(inputField.name);
-                            console.log(!validateEmail(inputField.value));
                             form.classList.add('error');
                             wrong();
                             return;
 
                         }
 
-                        if (inputField.type === 'tel' && !validatePhone(inputField.value)) {
+                        if (inputField.type === 'tel' && !iti.isValidNumber()) {
+
+
                             form.classList.add('error');
                             wrong();
                             return;
@@ -548,6 +564,7 @@
                                     formDataObject[key] = value;
                                 });
 
+
                                 var method = 'POST';
                                 var action = 'https://hooks.zapier.com/hooks/catch/3217841/ff4wgw/';
                                 var data = {};
@@ -561,7 +578,7 @@
                                 localStorage.setItem("email", formDataObject["email"]);
                                 localStorage.setItem("fist_name", formDataObject["fist_name"]);
                                 localStorage.setItem("last_name", formDataObject["last_name"]);
-                                localStorage.setItem("phone", formDataObject["phone"]);
+                                localStorage.setItem("phone", iti.getNumber());
 
                                 var xhr = new XMLHttpRequest();
                                 xhr.open(method, action, true);
@@ -598,7 +615,7 @@
                     (function () {
                         var tTime = 100, wTime = 200, eTime = 1000, position = 0;
                         putQuestion();
-                      
+
 
                         function putQuestion() {
 
@@ -609,11 +626,11 @@
                         }
                         function done() {
                             clickedNext();
-                            jQuery('#statusText').show()  && 
-                            jQuery('#inputProgress').hide();
+                            jQuery('#statusText').show() &&
+                                jQuery('#inputProgress').hide();
                         }
 
-                    
+
                         function hideCurrentInput(callback) {
                             inputContainer.style.opacity = 0.1;
                             inputProgress.style.transition = 'none';
@@ -634,7 +651,7 @@
                             inputProgress.style.width = '100%';
                             setTimeout(callback, wTime);
                         }
-                        
+
                     }())
                 </script>
                 <div class="progressionBox">
@@ -778,6 +795,7 @@
             $('.offerShort').html("200 Free Spins");
         });
     </script>
+
     </div>
 
 

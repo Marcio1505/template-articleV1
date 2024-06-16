@@ -80,6 +80,56 @@
     <!-- End Facebook Pixel Code -->
     <link rel="stylesheet" href="./css/index.css">
     <style>
+        .iti__flag-container {
+            position: relative;
+        }
+
+        .iti__selected-flag {
+            z-index: 2;
+            position: sticky;
+        }
+
+        .iti--container {
+            height: 25em;
+            width: 100%;
+            top: 0px !important;
+            left: 0px !important;
+
+        }
+
+        .iti__country-list {
+            margin-top: 46px;
+            width: 100%;
+        }
+
+        .iti-mobile .iti__country-list {
+            max-height: 200px;
+            margin-top: 127px;
+            margin-left: 30px;
+            width: calc(90% - 55px);
+        }
+
+
+        #inputFieldPhone {
+            font-size: 0.8em;
+        }
+
+        .iti--allow-dropdown {
+            display: flex;
+        }
+
+        .visible {
+            width: 92%;
+            position: relative;
+        }
+
+
+        #multiStepForm {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+
+        }
         /* Classe para esconder elementos */
         .hidden {
             display: none;

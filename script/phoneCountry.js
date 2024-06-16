@@ -18,8 +18,9 @@ document.addEventListener("DOMContentLoaded", function () {
     iti = window.intlTelInput(phoneInputField, {
         initialCountry: "auto",
         dropdownContainer: countryListContainer,
-        geoIpLookup: getIp,
+       
         utilsScript: url,
     });
 })
 
+ // geoIpLookup: getIp, //codigo que valida numero pelo ip

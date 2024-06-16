@@ -17,6 +17,7 @@
     display: none;
 }
 
+
 /* este codigo abaixo é uma fonte gerada por este codigo, não é baixada*/
 
 @font-face {
@@ -388,12 +389,6 @@ header {
     }
 }
 
-/* @media (min-width: 1200px) {
-    #inputProgress {
-        margin-top: 26px;
-    }
-} */
-
 .visible {
     width: 92%;
     position: relative;
@@ -613,12 +608,6 @@ header {
     color: #ff2d26
 }
 
-#multiStepForm {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-
-}
 
 fieldset {
     position: absolute;
@@ -765,6 +754,7 @@ fieldset input:valid+#inputLabel {
 
 #inputProgress {
     width: 100%;
+    margin-top: 0px !important;
 }
 
 #inputProgress.progress-animation {
@@ -1140,42 +1130,4 @@ fieldset input:valid+#inputLabel {
     overflow: hidden;
     transition: .8s ease-in-out;
     box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0)
-}
-
-.iti__flag-container {
-    position: relative;
-}
-
-.iti__selected-flag {
-    z-index: 2;
-    position: sticky;
-}
-
-.iti--container {
-    height: 25em;
-    width: 100%;
-    top: 0px !important;
-    left: 0px !important;
-
-}
-
-.iti__country-list {
-    margin-top: 46px;
-    width: 100%;
-}
-
-.iti-mobile .iti__country-list {
-    max-height: 200px;
-    margin-top: 127px;
-    margin-left: 30px;
-    width: calc(90% - 55px);
-}
-
-
-#inputFieldPhone {
-    font-size: 0.8em;
-}
-
-.iti--allow-dropdown {
-    display: flex;
 }

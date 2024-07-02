@@ -44,7 +44,7 @@ main {
 
 article {
     margin: 2rem 3rem 1rem 3rem;
-  
+
 }
 
 section {
@@ -81,9 +81,9 @@ p {
     padding: 0rem 0.8rem 0.8rem 0.8rem;
 }
 
-.ad-text{
+.ad-text {
     display: flex;
-    background-color:rgb(247, 247, 247);
+    background-color: rgb(247, 247, 247);
 }
 
 .ad-box img {
@@ -106,16 +106,13 @@ p {
 }
 
 
-@media (max-width: 1200px) {
-
-}
-
 @media (max-width: 767px) {
     body h1 {
         font-size: 2em;
         line-height: 1.3;
     }
 }
+
 
 /* Teste */
 
@@ -262,5 +259,16 @@ footer p {
         right: 0px;
         width: 10rem;
     }
-} */
+} 
+    teste video
+    */
+.destacado {
+    position: unset;
+    max-width: 80vw;
+}
 
+@media screen and (min-width: 767px) {
+    .destacado {
+        max-width: 50vw;
+    }
+}

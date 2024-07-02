@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Artigo sobre Unicorn of Odds">
-    <title>Artigo sobre Unicorn of Odds</title>
+    <meta name="description" content="Artigo teste para verificação de SEO">
+    <title>Artigo teste para verificação de SEO</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -44,40 +44,45 @@
                     interdum, nulla at pharetra congue, elit magna aliquet leo, nec fermentum augue lacus ut libero.
                 </p>
         </article>
-        <div class="ads">
-            <div class="ad-box">
-                <span>advertising</span>
-                <a href="">
-                    <img src="./assets/ads/ad1.png" alt="Anúncio 1">
-                </a>
+        <aside role="complementary">
+            <div class="ads">
+                <div class="ad-box">
+                    <span>advertising</span>
+                    <a href="">
+                        <img src="./assets/ads/ad1.png" alt="Anúncio">
+                    </a>
+                </div>
             </div>
-        </div>
-        <article>
-                <p>
-                    Maecenas vehicula elementum felis, ac vehicula neque pharetra vel. Sed sit amet
-                    metus sem. Fusce rutrum
-                    velit in semper gravida. In eu mollis ligula. Suspendisse ullamcorper libero at dictum fringilla.
-                    Nunc
-                    interdum, nulla at pharetra congue, elit magna aliquet leo, nec fermentum augue lacus ut libero.
-                </p>
+        </aside>
 
-                <p>
-                    Maecenas vehicula elementum felis, ac vehicula neque pharetra vel. Sed sit amet
-                    metus sem. Fusce rutrum
-                    velit in semper gravida. In eu mollis ligula. Suspendisse ullamcorper libero at dictum fringilla.
-                    Nunc
-                    interdum, nulla at pharetra congue, elit magna aliquet leo, nec fermentum augue lacus ut libero.
-                </p>
+        <article>
+            <p>
+                Maecenas vehicula elementum felis, ac vehicula neque pharetra vel. Sed sit amet
+                metus sem. Fusce rutrum
+                velit in semper gravida. In eu mollis ligula. Suspendisse ullamcorper libero at dictum fringilla.
+                Nunc
+                interdum, nulla at pharetra congue, elit magna aliquet leo, nec fermentum augue lacus ut libero.
+            </p>
+
+            <p>
+                Maecenas vehicula elementum felis, ac vehicula neque pharetra vel. Sed sit amet
+                metus sem. Fusce rutrum
+                velit in semper gravida. In eu mollis ligula. Suspendisse ullamcorper libero at dictum fringilla.
+                Nunc
+                interdum, nulla at pharetra congue, elit magna aliquet leo, nec fermentum augue lacus ut libero.
+            </p>
         </article>
         <!-- ads -->
-        <div class="ads">
-            <div class="ad-box">
-                <span>advertising</span>
-                <a href="">
-                    <img src="./assets/ads/ad1.png" alt="Anúncio 1">
-                </a>
+        <aside role="complementary">
+            <div class="ads">
+                <div class="ad-box">
+                    <span>advertising</span>
+                    <a href="">
+                        <img src="./assets/ads/ad1.png" alt="Anúncio">
+                    </a>
+                </div>
             </div>
-        </div>
+        </aside>
         <!-- ads -->
         <article>
             <p>
@@ -103,8 +108,8 @@
                             stroke="#FFF" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></line>
                     </g>
                 </svg></button>
-            <div class="ad-box">
-
+            <div class="ad-box" id="ads-box-video">
+                <h2>titulo</h2>
                 <a href="">
                     <div class="video-container">
 
@@ -126,33 +131,39 @@
     <script>
         // Função para adicionar classe ao elemento quando chegar no final da página
         function adicionarClasseAoFinalDaPagina() {
-          // Obtém o elemento que queremos destacar
-          const elemento = document.getElementById('video-container');
-          
-          // Verifica se o elemento existe
-          if (!elemento) return;
-    
-          // Calcula a posição do elemento em relação ao topo da página
-          const rect = elemento.getBoundingClientRect();
-          const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-          const elementoTopo = rect.top + scrollTop;
-    
-          // Calcula a altura da janela do navegador
-          const windowHeight = window.innerHeight;
-    
-          // Verifica se o usuário chegou ao final da página
-          if (elementoTopo <= scrollTop + windowHeight) {
-            // Adiciona a classe ao elemento
-            elemento.classList.add('destacado');
-          }
+            // Obtém o elemento que queremos destacar
+            const elemento = document.getElementById('ads-box-video');
+            const videoContainer = document.querySelector('.video-container');
+            const videobutton = document.querySelector('#hide-video-button');
+
+            // Verifica se o elemento existe
+            if (!elemento) return;
+
+            // Calcula a posição do elemento em relação ao topo da página
+            const rect = elemento.getBoundingClientRect();
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const elementoTopo = rect.top + scrollTop;
+
+            // Calcula a altura da janela do navegador
+            const windowHeight = window.innerHeight;
+
+            // Verifica se o usuário chegou ao final da página
+            if (elementoTopo <= scrollTop + windowHeight) {
+                // Adiciona a classe ao elemento
+                videoContainer.classList.add('destacado');
+                videobutton.style.display = 'none';
+            } else {
+                videoContainer.classList.remove('destacado');
+                videobutton.style.display = 'unset';
+            }
         }
-    
+
         // Adiciona um listener para verificar quando o usuário rolar a página
         window.addEventListener('scroll', adicionarClasseAoFinalDaPagina);
-    
+
         // Chama a função uma vez ao carregar a página para verificar o estado inicial
         adicionarClasseAoFinalDaPagina();
-      </script>
+    </script>
     <script>
 
         document.addEventListener('DOMContentLoaded', function () {
@@ -161,7 +172,7 @@
                 "Seu site aqui";
             document.getElementById('title').innerHTML =
                 // Nome do site aqui 
-                " Lorem Ipsum";
+                "Lorem Ipsum";
         });
     </script>
 

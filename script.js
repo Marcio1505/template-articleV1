@@ -1,4 +1,11 @@
 document.addEventListener('DOMContentLoaded', function () {
+    document.querySelector('.pageName').innerHTML =
+        "Seu site aqui";
+    document.getElementById('title').innerHTML =
+        "Lorem Ipsum";
+});
+
+document.addEventListener('DOMContentLoaded', function () {
     var hideVideoButton = document.getElementById('hide-video-button');
     var videoContainer = document.querySelector('.video-container');
     var arrow = document.getElementById('arrow-svg');
@@ -24,34 +31,32 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
-// Função para verificar a posição do scroll
-function checkScroll() {
-    // Obter o elemento com a classe .ads-video
-    const adsVideo = document.querySelector('.ads-video');
-    
-    // Verificar se o elemento existe na página
-    if (!adsVideo) return;
-    
-    // Obter a posição do topo do elemento .ads-video em relação ao topo da janela
-    const adsVideoTop = adsVideo.getBoundingClientRect().top;
-    
-    // Verificar a posição atual do scroll da página
-    const scrollPosition = window.scrollY || window.pageYOffset;
-    
-    // Definir a distância de scroll que desejamos para aplicar a classe
-    const offset = 20;
-    
-    // Se o topo do elemento .ads-video estiver dentro do viewport mais a margem de 40px
-    if (adsVideoTop - scrollPosition < offset) {
-      adsVideo.classList.add('scrolled');
+
+function adsOnFinalPage() {
+    const element = document.getElementById('ads-box-video');
+    const videoContainer = document.querySelector('.video-container');
+    const videobutton = document.querySelector('#hide-video-button');
+
+    if (!element) return;
+
+    const rect = element.getBoundingClientRect();
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const elementTopo = rect.top + scrollTop;
+
+    const windowHeight = window.innerHeight;
+
+    if (elementTopo <= scrollTop + windowHeight) {
+        videoContainer.classList.add('destacado');
+        videobutton.style.display = 'none';
     } else {
-      adsVideo.classList.remove('scrolled');
+        videoContainer.classList.remove('destacado');
+        videobutton.style.display = 'unset';
     }
-  }
-  
-  // Adicionar um evento de scroll à janela
-  window.addEventListener('scroll', checkScroll);
-  
-  // Executar checkScroll inicialmente para aplicar a classe se necessário
-  checkScroll();
-  
+}
+
+window.addEventListener('scroll', adsOnFinalPage);
+
+adsOnFinalPage();
+
+
+     

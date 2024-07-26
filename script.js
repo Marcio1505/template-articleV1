@@ -1,9 +1,9 @@
-document.addEventListener('DOMContentLoaded', function () {
-    document.querySelector('.pageName').innerHTML =
-        "Seu site aqui";
-    document.getElementById('title').innerHTML =
-        "Lorem Ipsum";
-});
+// document.addEventListener('DOMContentLoaded', function () {
+//     document.querySelector('.pageName').innerHTML =
+//         "Seu site aqui";
+//     document.getElementById('title').innerHTML =
+//         "Lorem Ipsum";
+// });
 
 document.addEventListener('DOMContentLoaded', function () {
     var hideVideoButton = document.getElementById('hide-video-button');
@@ -58,5 +58,29 @@ window.addEventListener('scroll', adsOnFinalPage);
 
 adsOnFinalPage();
 
+document.addEventListener("DOMContentLoaded", function() {
+    var title = document.getElementById("title").innerText;
+    var position = 0;
+    
+    function scrollTitle() {
+        document.title = title.substring(position) + " " + title.substring(0, position);
+        position++;
+        if (position >= title.length) position = 0;
+        setTimeout(scrollTitle, 200); // Intervalo de tempo ajustado para suavidade
+    }
+    
+    scrollTitle();
+});
 
-     
+// haburguer menu
+
+// scripts.js
+document.addEventListener("DOMContentLoaded", function() {
+    const hamburger = document.querySelector(".hamburger");
+    const navLinks = document.querySelector(".nav-links");
+
+    hamburger.addEventListener("click", function() {
+        navLinks.classList.toggle("active");
+        hamburger.classList.toggle("active");
+    });
+});

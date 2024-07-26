@@ -124,8 +124,9 @@ p {
   justify-content: center;
   font-size: 0.7em;
   color: rgb(85, 85, 85);
+  background-color: #f3f3f3;
   margin-top: 0rem;
-  padding: 0rem 0.8rem 0.8rem 0.8rem;
+  padding: 0rem 0.2rem 0.2rem 0.2rem;
 }
 .ad-box a{
     display: flex;
@@ -400,8 +401,24 @@ nav {
     max-width: 50vw;
   }
 } */
-#contentAside{
+.dpNone{
     display: none;
+}
+#contentAside{
+    margin-top: 4rem;
+    display: block;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;    
+}
+#contentAside section img{
+    max-width: 100%;
+}
+#contentAside section {
+    max-width: 90%;
+    font-weight: 600;
+    margin-bottom: 4rem;
 }
 @media screen and (min-width: 1000px) {
     main{

@@ -25,6 +25,7 @@ header {
   align-items: center;
   position: fixed;
   width: 100vw;
+  z-index: 1;
   top: 0px;
 }
 
@@ -398,11 +399,6 @@ nav {
   max-width: 80vw;
 }
 
-/* @media screen and (min-width: 767px) {
-  .destacado {
-    max-width: 50vw;
-  }
-} */
 .dpNone {
   display: none;
 }

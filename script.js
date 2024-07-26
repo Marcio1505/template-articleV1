@@ -46,7 +46,9 @@ function adsOnFinalPage() {
     const windowHeight = window.innerHeight;
 
     if (elementTopo <= scrollTop + windowHeight) {
-        videoContainer.classList.add('destacado');
+        videoContainer.classList.add('destacado'); 
+        videoContainer.classList.add('slide-in');
+        videoContainer.classList.remove('slide-out');
         videobutton.style.display = 'none';
     } else {
         videoContainer.classList.remove('destacado');
